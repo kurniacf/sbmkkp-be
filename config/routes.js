@@ -35,4 +35,8 @@ module.exports.routes = {
 
   // AUTHENTICATION
   'POST /auth/check-account': 'authentication/check-account',
+
+  // PENDAFTAR
+  'POST /pendaftar/register': 'pendaftar/register',
+  'POST /pendaftar/login': 'pendaftar/login',
 };
