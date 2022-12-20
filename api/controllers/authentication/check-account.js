@@ -6,27 +6,23 @@ module.exports = {
 
     inputs: {
         token: {
-        type: 'string',
-        required: true,
+            type: 'string',
+            required: true,
         }
     },
 
     exits: {
         success: {
-        statusCode: 200,
-        description: 'Check account successful',
+            statusCode: 200,
+            description: 'Check account successful',
         },
         error: {
-        statusCode: 500,
-        description: 'Something went wrong',
+            statusCode: 500,
+            description: 'Something went wrong',
         },
-        notPendaftar: {
-        statusCode: 401,
-        description: 'Bukan Role Pendaftar',
-        },
-        notPanitia: {
-        statusCode: 401,
-        description: 'Bukan Role Panitia',
+        notRole: {
+            statusCode: 400,
+            description: 'Not role',
         }
     },
 
@@ -34,14 +30,14 @@ module.exports = {
         try {
             const data = await sails.helpers.decodeJwtToken(inputs.token);
 
-            if (data.role !== 'admin' && data.role !== 'buyer' && data.role !== 'employee') {
-                return exits.notAdmin({
-                message: 'Not admin'
+            if (data.role !== 'pendaftar' && data.role !== 'panitia') {
+                return exits.notRole({
+                    message: 'Tidak dapat akses karena Role'
                 });
             }
 
             return exits.success({
-                message: 'Check account successful',
+                message: 'Cek Akun berhasil',
                 data
             });
 
