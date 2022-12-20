@@ -33,5 +33,6 @@ module.exports.routes = {
   *                                                                          *
   ***************************************************************************/
 
-
+  // AUTHENTICATION
+  'POST /auth/check-account': 'authentication/check-account',
 };
