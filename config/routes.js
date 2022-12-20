@@ -39,4 +39,10 @@ module.exports.routes = {
   // PENDAFTAR
   'POST /pendaftar/register': 'pendaftar/register',
   'POST /pendaftar/login': 'pendaftar/login',
+  'POST /pendaftar/forgot-password': 'pendaftar/forgot-password',
+  'POST /pendaftar/reset-password': 'pendaftar/reset-password',
+  'GET /pendaftar/view': 'pendaftar/view',
+  'GET /pendaftar/view/:id': 'pendaftar/view',
+  'POST /pendaftar/update': 'pendaftar/update',
+  'POST /pendaftar/delete': 'pendaftar/delete',
 };
