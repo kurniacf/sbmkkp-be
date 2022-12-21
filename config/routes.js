@@ -58,4 +58,8 @@ module.exports.routes = {
 
   // JADWAL
   'POST /jadwal/create': 'jadwal/create',
+  'GET /jadwal/view': 'jadwal/view',
+  'GET /jadwal/view/:id': 'jadwal/view',
+  'POST /jadwal/update': 'jadwal/update',
+  'POST /jadwal/delete': 'jadwal/delete',
 };
