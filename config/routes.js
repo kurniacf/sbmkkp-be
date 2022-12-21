@@ -55,4 +55,7 @@ module.exports.routes = {
   'GET /panitia/view/:id': 'panitia/view',
   'POST /panitia/update': 'panitia/update',
   'POST /panitia/delete': 'panitia/delete',
+
+  // JADWAL
+  'POST /jadwal/create': 'jadwal/create',
 };

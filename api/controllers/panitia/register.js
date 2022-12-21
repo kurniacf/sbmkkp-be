@@ -61,7 +61,7 @@ module.exports = {
             if (error.code === 'E_UNIQUE') {
                 return exits.emailAlreadyInUse({
                     message: 'Maap telah terjadi error :)',
-                    error: 'Email atau NIK ini udah ada yang pakai',
+                    error: 'Email ini udah ada yang pakai',
                 });
             }
             return exits.error({
