@@ -64,12 +64,11 @@ module.exports = {
 
       } else if (data.role === 'panitia') {
         if(inputs.idPendaftar){
-          let pendaftarId = inputs.idPendaftar;
-          let berkas = await Berkas.updateOne({ idPendaftar: pendaftarId})
+          let berkas = await Berkas.updateOne({ id: inputs.idBerkas})
           .set({
             foto_ktp: inputs.foto_ktp,
             foto_formal: inputs.foto_formal,
-            idPendaftar: pendaftarId,
+            idPendaftar: inputs.idPendaftar,
             idJadwal: inputs.idJadwal
           });
 
