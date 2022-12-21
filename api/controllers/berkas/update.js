@@ -1,3 +1,5 @@
+const Berkas = require("../../models/Berkas");
+
 /* eslint-disable camelcase */
 module.exports = {
 
@@ -64,18 +66,33 @@ module.exports = {
 
       } else if (data.role === 'panitia') {
         if(inputs.idPendaftar){
-          let berkas = await Berkas.updateOne({ idPendaftar: inputs.idPendaftar})
-          .set({
-            foto_ktp: inputs.foto_ktp,
-            foto_formal: inputs.foto_formal,
-            idJadwal: inputs.idJadwal,
-            status: inputs.status
-          });
-
-          return exits.success({
-            message: 'Success Update Berkas',
-            data: berkas
-          });
+          if(inputs.status === 'verified'){
+            let berkas = await Berkas.updateOne({ idPendaftar: inputs.idPendaftar})
+            .set({
+              foto_ktp: inputs.foto_ktp,
+              foto_formal: inputs.foto_formal,
+              idJadwal: inputs.idJadwal,
+              status: 'verified',
+              idUjian: await sails.helpers.strings.random('url-friendly')
+            });
+            return exits.success({
+              message: 'Success Update Berkas',
+              data: berkas
+            });
+          } else {
+            let berkas = await Berkas.updateOne({ idPendaftar: inputs.idPendaftar})
+            .set({
+              foto_ktp: inputs.foto_ktp,
+              foto_formal: inputs.foto_formal,
+              idJadwal: inputs.idJadwal,
+              status: inputs.status,
+              idUjian: null
+            });
+            return exits.success({
+              message: 'Success Update Berkas',
+              data: berkas
+            });
+          }
         }
       }
     } catch (error) {

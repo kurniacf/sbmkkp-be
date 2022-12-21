@@ -31,6 +31,10 @@ module.exports = {
     idJadwal: {
       model: 'jadwal',
       columnName: 'id_jadwal',
+    },
+    idUjian: {
+      type: 'string',
+      columnName: 'id_ujian',
     }
   },
 };

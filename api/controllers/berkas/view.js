@@ -27,7 +27,12 @@ module.exports = {
       let berkasId = this.req.param('id');
 
       if(data.role === 'pendaftar') {
-        let berkasDB = await Berkas.find({idPendaftar: data.id});
+        let berkasDB = await Berkas.findOne({idPendaftar: data.id});
+        // let pendaftarDB = await Pendaftar.findOne({id: data.id});
+        // let jadwalDB = await Jadwal.findOne({id: berkasDB.idJadwal});
+
+        // Object.assign(berkasDB, pendaftarDB, jadwalDB);
+
         return exits.success({
           message: `Success view Berkas`,
           data: berkasDB
