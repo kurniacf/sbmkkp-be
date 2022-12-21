@@ -17,6 +17,9 @@ module.exports = {
     },
     idJadwal: {
       type: 'number',
+    },
+    idBerkas: {
+      type: 'number',
       required: true,
     }
   },
