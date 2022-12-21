@@ -17,6 +17,10 @@ module.exports = {
     },
     idJadwal: {
       type: 'number',
+    },
+    status: {
+      type: 'string',
+      isIn: ['verified', 'cancelled', 'pending'],
     }
   },
 
@@ -49,7 +53,8 @@ module.exports = {
           .set({
             foto_ktp: inputs.foto_ktp,
             foto_formal: inputs.foto_formal,
-            idJadwal: inputs.idJadwal
+            idJadwal: inputs.idJadwal,
+            status: inputs.status
           });
 
         return exits.success({
@@ -63,7 +68,8 @@ module.exports = {
           .set({
             foto_ktp: inputs.foto_ktp,
             foto_formal: inputs.foto_formal,
-            idJadwal: inputs.idJadwal
+            idJadwal: inputs.idJadwal,
+            status: inputs.status
           });
 
           return exits.success({
