@@ -61,8 +61,8 @@ module.exports = {
           let berkas = await Berkas.create({
             foto_ktp: inputs.foto_ktp,
             foto_formal: inputs.foto_formal,
-            id_pendaftar: inputs.idPendaftar,
-            id_jadwal: inputs.idJadwal
+            idPendaftar: inputs.idPendaftar,
+            idJadwal: inputs.idJadwal
           }).fetch();
 
           return exits.success({
