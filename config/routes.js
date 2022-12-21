@@ -62,4 +62,11 @@ module.exports.routes = {
   'GET /jadwal/view/:id': 'jadwal/view',
   'POST /jadwal/update': 'jadwal/update',
   'POST /jadwal/delete': 'jadwal/delete',
+
+  // BERKAS
+  'POST /berkas/create': 'berkas/create',
+  'GET /berkas/view': 'berkas/view',
+  'GET /berkas/view/:id': 'berkas/view',
+  'POST /berkas/update': 'berkas/update',
+  'POST /berkas/delete': 'berkas/delete',
 };
