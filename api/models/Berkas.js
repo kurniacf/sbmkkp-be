@@ -35,6 +35,7 @@ module.exports = {
     idUjian: {
       type: 'string',
       columnName: 'id_ujian',
+      allowNull: true,
     }
   },
 };
