@@ -1,5 +1,3 @@
-const Berkas = require("../../models/Berkas");
-
 /* eslint-disable camelcase */
 module.exports = {
 
