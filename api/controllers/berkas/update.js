@@ -20,7 +20,6 @@ module.exports = {
     },
     idBerkas: {
       type: 'number',
-      required: true,
     }
   },
 
@@ -53,7 +52,6 @@ module.exports = {
           .set({
             foto_ktp: inputs.foto_ktp,
             foto_formal: inputs.foto_formal,
-            idPendaftar: pendaftarId,
             idJadwal: inputs.idJadwal
           });
 
@@ -68,7 +66,6 @@ module.exports = {
           .set({
             foto_ktp: inputs.foto_ktp,
             foto_formal: inputs.foto_formal,
-            idPendaftar: inputs.idPendaftar,
             idJadwal: inputs.idJadwal
           });
 
