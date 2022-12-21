@@ -17,9 +17,6 @@ module.exports = {
     },
     idJadwal: {
       type: 'number',
-    },
-    idBerkas: {
-      type: 'number',
     }
   },
 
@@ -62,7 +59,7 @@ module.exports = {
 
       } else if (data.role === 'panitia') {
         if(inputs.idPendaftar){
-          let berkas = await Berkas.updateOne({ id: inputs.idBerkas})
+          let berkas = await Berkas.updateOne({ idPendaftar: inputs.idPendaftar})
           .set({
             foto_ktp: inputs.foto_ktp,
             foto_formal: inputs.foto_formal,
