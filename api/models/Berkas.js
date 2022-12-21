@@ -24,12 +24,12 @@ module.exports = {
       columnName: 'status',
     },
     idPendaftar: {
-      model: 'Pendaftar',
+      type: 'number',
       columnName: 'id_pendaftar',
       unique: true
     },
     idJadwal: {
-      model: 'Jadwal',
+      type: 'number',
       columnName: 'id_jadwal',
     }
   },
