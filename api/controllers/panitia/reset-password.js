@@ -2,7 +2,7 @@ module.exports = {
 
     friendlyName: 'Reset password',
 
-    description: 'Reset password Pendaftar',
+    description: 'Reset password Panitia',
 
     inputs: {
         password: {
@@ -38,9 +38,9 @@ module.exports = {
             });
         }
 
-        let pendaftarDB = await Pendaftar.findOne({ passwordResetToken: inputs.token });
+        let panitiaDB = await Panitia.findOne({ passwordResetToken: inputs.token });
 
-        if (!pendaftarDB || pendaftarDB.passwordResetTokenExpiresAt <= Date.now()) {
+        if (!panitiaDB || panitiaDB.passwordResetTokenExpiresAt <= Date.now()) {
             return exits.invalidToken({
                 error: 'Tokenmu invalid atau expired',
             });
@@ -50,19 +50,19 @@ module.exports = {
             inputs.password
         );
 
-        await Pendaftar.updateOne({ id: pendaftarDB.id }).set({
+        await Panitia.updateOne({ id: panitiaDB.id }).set({
             password: hashedPassword,
             passwordResetToken: '',
             passwordResetTokenExpiresAt: 0,
         });
 
-        const token = await sails.helpers.generateNewJwtToken(pendaftarDB.email, pendaftarDB.id, 'pendaftar');
+        const token = await sails.helpers.generateNewJwtToken(panitiaDB.email, panitiaDB.id, 'panitia');
 
-        this.req.pendaftarDB = pendaftarDB;
+        this.req.panitiaDB = panitiaDB;
         return exits.success({
-            message: `Password reset successful. ${pendaftarDB.email} has been logged in`,
-            data: pendaftarDB,
-            role: 'pendaftar',
+            message: `Password reset successful. ${panitiaDB.email} has been logged in`,
+            data: panitiaDB,
+            role: 'panitia',
             token,
         });
     }

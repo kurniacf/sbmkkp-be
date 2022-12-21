@@ -45,4 +45,14 @@ module.exports.routes = {
   'GET /pendaftar/view/:id': 'pendaftar/view',
   'POST /pendaftar/update': 'pendaftar/update',
   'POST /pendaftar/delete': 'pendaftar/delete',
+
+  // PANITIA
+  'POST /panitia/register': 'panitia/register',
+  'POST /panitia/login': 'panitia/login',
+  'POST /panitia/forgot-password': 'panitia/forgot-password',
+  'POST /panitia/reset-password': 'panitia/reset-password',
+  'GET /panitia/view': 'panitia/view',
+  'GET /panitia/view/:id': 'panitia/view',
+  'POST /panitia/update': 'panitia/update',
+  'POST /panitia/delete': 'panitia/delete',
 };

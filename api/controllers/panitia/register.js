@@ -3,7 +3,7 @@ module.exports = {
 
     friendlyName: 'Register',
 
-    description: 'Register Pendaftar.',
+    description: 'Register Panitia.',
 
     inputs: {
         nama: {
@@ -21,25 +21,6 @@ module.exports = {
             required: true,
             minLength: 6,
         },
-        nik: {
-            type: 'string',
-            required: true,
-            unique: true,
-        },
-        jenis_kelamin: {
-            type: 'string',
-            isIn: ['pria', 'perempuan'],
-        },
-        tempat_lahir: {
-            type: 'string',
-        },
-        tanggal_lahir: {
-            type: 'string',
-            format: 'date-time',
-        },
-        edukasi: {
-            type: 'string',
-        },
         nomor_telepon: {
             type: 'string',
         },
@@ -48,7 +29,7 @@ module.exports = {
     exits: {
         success: {
             statusCode: 200,
-            description: 'Pendaftar telah berhasil dibuat',
+            description: 'Panitia telah berhasil dibuat',
         },
         emailAlreadyInUse: {
             statusCode: 400,
@@ -64,21 +45,16 @@ module.exports = {
         try {
             const newEmailAddress = inputs.email.toLowerCase();
 
-            let newPendaftar = await Pendaftar.create({
+            let newPanitia = await Panitia.create({
                 nama: inputs.nama,
                 email: newEmailAddress,
                 password: inputs.password,
-                nik: inputs.nik,
-                jenis_kelamin: inputs.jenis_kelamin,
-                tempat_lahir: inputs.tempat_lahir,
-                tanggal_lahir: inputs.tanggal_lahir,
-                edukasi: inputs.edukasi,
                 nomor_telepon: inputs.nomor_telepon,
             });
 
             return exits.success({
                 message: `Akun dengan email ${inputs.email} telah berhasil dibuat`,
-                data: newPendaftar
+                data: newPanitia
             });
 
         } catch (error) {

@@ -3,10 +3,10 @@ module.exports = {
 
     friendlyName: 'Update',
 
-    description: 'Update Data Pendaftar',
+    description: 'Update Data Panitia',
 
     inputs: {
-        pendaftarId: {
+        panitiaId: {
             type: 'number',
         },
         nama: {
@@ -14,23 +14,6 @@ module.exports = {
         },
         email: {
             type: 'string'
-        },
-        nik: {
-            type: 'string',
-        },
-        jenis_kelamin: {
-            type: 'string',
-            enum: ['pria', 'perempuan']
-        },
-        tempat_lahir: {
-            type: 'string',
-        },
-        tanggal_lahir: {
-            type: 'string',
-            format: 'date-time',
-        },
-        edukasi: {
-            type: 'string',
         },
         nomor_telepon: {
             type: 'string',
@@ -48,7 +31,7 @@ module.exports = {
         },
         notRole: {
             statusCode: 404,
-            description: 'Role bukan pendaftar atau panitia'
+            description: 'Role bukan Panitia atau panitia'
         },
         onlyPanitia: {
             statusCode: 404,
@@ -63,53 +46,43 @@ module.exports = {
             let tokenHeader = credential[1];
             const data = await sails.helpers.decodeJwtToken(tokenHeader);
 
-            let pendaftarDB;
+            let panitiaDB;
 
-            if (inputs.pendaftarId) {
-                if (!(data.role === 'pendaftar')) {
+            if (inputs.panitiaId) {
+                if (!(data.role === 'Panitia')) {
                     return exits.onlyPanitia({
                         message: `Maap telah terjadi error :)`,
                         error: error.message + `Hanya Panitia yang bisa akses`
                     });
                 } else {
-                    await Pendaftar.updateOne({ id: inputs.pendaftarId }).set({
+                    await Panitia.updateOne({ id: inputs.panitiaId }).set({
                         nama: inputs.nama,
                         email: inputs.email,
-                        nik: inputs.nik,
-                        jenis_kelamin: inputs.jenis_kelamin,
-                        tempat_lahir: inputs.tempat_lahir,
-                        tanggal_lahir: inputs.tanggal_lahir,
-                        edukasi: inputs.edukasi,
                         nomor_telepon: inputs.nomor_telepon
                     });
-                    pendaftarDB = await Pendaftar.findOne({ id: inputs.pendaftarId });
+                    panitiaDB = await Panitia.findOne({ id: inputs.panitiaId });
                 }
             } else {
-                await Pendaftar.updateOne({ id: data.id }).set({
+                await Panitia.updateOne({ id: data.id }).set({
                     nama: inputs.nama,
                     email: inputs.email,
-                    nik: inputs.nik,
-                    jenis_kelamin: inputs.jenis_kelamin,
-                    tempat_lahir: inputs.tempat_lahir,
-                    tanggal_lahir: inputs.tanggal_lahir,
-                    edukasi: inputs.edukasi,
                     nomor_telepon: inputs.nomor_telepon
                 });
-                pendaftarDB = await Pendaftar.findOne({ id: data.id });
+                panitiaDB = await Panitia.findOne({ id: data.id });
             }
 
-            const token = await sails.helpers.generateNewJwtToken(pendaftarDB.email, pendaftarDB.id, 'pendaftar');
+            const token = await sails.helpers.generateNewJwtToken(panitiaDB.email, panitiaDB.id, 'panitia');
 
             return exits.success({
-                message: `Success update Pendaftar Data`,
-                data: pendaftarDB,
-                role: 'pendaftar',
+                message: `Success update Panitia Data`,
+                data: panitiaDB,
+                role: 'panitia',
                 token: token
             });
 
         } catch (error) {
             return exits.error({
-                message: `Error update Pendaftar Data`,
+                message: `Error update Panitia Data`,
                 error: error.message
             });
         }
